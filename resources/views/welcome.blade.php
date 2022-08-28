@@ -11,9 +11,9 @@
 <body>
     <div class="content">
         <nav>
-            <a href="#">sou prestador</a>
-            <a href="#">sou administrador</a>
-            <a href="#">sou cliente</a>
+            <a href="{{ route('provider.home') }}">sou prestador</a>
+            <a href="{{ route('admin.home') }}">sou administrador</a>
+            <a href="{{ route('client.home') }}">sou cliente</a>
         </nav>
 
         <h1>Mão na Roda</h1>
