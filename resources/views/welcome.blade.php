@@ -15,7 +15,9 @@
             <a href="#">sou administrador</a>
             <a href="#">sou cliente</a>
         </nav>
+
         <h1>Mão na Roda</h1>
+
         <footer>a melhor plataforma para encontrar profissionais</footer>
     </div>
 
