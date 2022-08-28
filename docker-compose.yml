@@ -1,0 +1,48 @@
+version: "3.5"
+
+networks: 
+  app-network:
+    driver: bridge
+
+services:
+  mysql:
+    container_name: 'maonaroda_mysql'
+    image: mysql
+    ports: 
+      - "3306:3306"
+    volumes:
+      - .docker/dbdata:/var/lib/mysql
+    environment: 
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks: 
+      - app-network
+  phpmyadmin:
+    container_name: 'maonaroda_phpmyadmin'
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      MYSQL_USERNAME: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+  back:
+    container_name: 'maonaroda_back'
+    build: .
+    ports: 
+      - "8000:8000"
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks: 
+      - app-network
+    depends_on:
+      - mysql
