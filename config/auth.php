@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'client',
+        'passwords' => 'clients',
     ],
 
     /*
@@ -36,9 +36,19 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
+        ],
+
+        'client' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
+
+        'provider' => [
+            'driver' => 'session',
+            'provider' => 'providers',
         ],
     ],
 
@@ -60,15 +70,20 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Usuario::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Usuario::class,
+        ],
+
+        'providers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Usuario::class,
+        ]
     ],
 
     /*
@@ -87,10 +102,24 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 60,
+            'expire' => 43800,
+            'throttle' => 60,
+        ],
+
+        'clients' => [
+            'provider' => 'clients',
+            'table' => 'password_resets',
+            'expire' => 43800,
+            'throttle' => 60,
+        ],
+
+        'providers' => [
+            'provider' => 'providers',
+            'table' => 'password_resets',
+            'expire' => 43800,
             'throttle' => 60,
         ],
     ],
@@ -106,6 +135,6 @@ return [
     |
     */
 
-    'password_timeout' => 10800,
+    'password_timeout' => 43800,
 
 ];
