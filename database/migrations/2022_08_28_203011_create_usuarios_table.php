@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('email', 75)->unique();
-            $table->string('senha');
+            $table->string('password');
             $table->string('nome', 45);
             $table->string('cpf', 11)->unique();
             $table->string('username', 45)->unique();
