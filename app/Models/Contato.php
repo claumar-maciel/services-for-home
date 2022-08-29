@@ -12,6 +12,5 @@ class Contato extends Model
     protected $fillable = [
         'celular',
         'telefone_residencial',
-        'telefone_comercial',
     ];
 }
