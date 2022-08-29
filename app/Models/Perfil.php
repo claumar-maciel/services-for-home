@@ -9,7 +9,12 @@ class Perfil extends Model
 {
     use HasFactory;
 
+    const ADMINISTRADOR = 1;
+    const CLIENTE = 2;
+    const PRESTADOR = 3;
+
     protected $fillable = [
+        'id',
         'descricao'
     ];
 }
