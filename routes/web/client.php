@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,4 +9,6 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::get('/create', [LoginController::class, 'create'])->name('create');
+Route::post('/register', [LoginController::class, 'register'])->name('register');
