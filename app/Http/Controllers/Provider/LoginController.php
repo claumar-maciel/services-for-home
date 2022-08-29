@@ -11,6 +11,7 @@ use App\Models\Perfil;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,9 @@ class LoginController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        DB::transaction(function () use ($request) {
+        try {
+            DB::beginTransaction();
+
             $request['celular'] = StringHelper::somenteNumeros($request->celular);
             $request['telefone_residencial'] = StringHelper::somenteNumeros($request->telefone_residencial);
             $dadosDoContato = array_merge(
@@ -52,12 +55,18 @@ class LoginController extends Controller
             );
 
             $usuario = Usuario::create($dadosDoUsuario);
+            
+            DB::commit();
 
             if ($usuario) {
-                return redirect('client.login')->with('success','cadastro realizado com sucesso!');
+                Session::flash('success','cadastro realizado com sucesso!'); 
+        
+                return redirect()->route('provider.login');
             }
-        });
-
-        return back()->with('error','ocorreu um erro ao efetuar o cadastro!');
+        } catch (\Exception $e) {
+            DB::rollback();
+            
+            return back()->with('error','ocorreu um erro ao efetuar o cadastro!');
+        }
     }
 }

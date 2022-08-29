@@ -9,6 +9,8 @@
                 <h5 class="card-title text-dark">Entrar como cliente</h5>
                 <p class="card-text">
                     <form class="mt-4" action="{{route('client.login')}}" method="POST">
+                        @include('shared.error_success_alert')
+
                         <div class="form-group my-3">
                             <input type="email" class="form-control" placeholder="email">
                         </div>
