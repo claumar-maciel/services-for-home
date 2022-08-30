@@ -9,7 +9,7 @@
     @vite([
         'resources/css/app.css',
         'resources/scss/app.scss',
-        'resources/sass/app.js'
+        'resources/js/app.js'
     ])
 </head>
 <body>
