@@ -3,37 +3,24 @@
 @section('title', 'bem-vindo')
  
 @section('content')
-    <nav>
-        <div class="container__nav__btn d-flex justify-content-center align-items-center flex-column">
-            <a href="{{ route('provider.login') }}">sou prestador</a>
+    <h1 class="text-white mb-5">MÃO NA RODA</h1>
 
-            <div class="mt-2 text-white">
-                <i class="bi bi-wrench-adjustable-circle"></i> instalações e manutenções
-            </div>
-
-            <div class="mt-2 text-white">
-                <i class="bi bi-truck"></i> mudanças
-            </div>
-
-            <div class="mt-2 text-white">
-                <i class="bi bi-pc-display-horizontal"></i> serviços de informática
-            </div>
-        </div>
-
-        <div class="container__nav__btn d-flex justify-content-center align-items-center flex-column">
-            <a href="{{ route('client.login') }}">sou cliente</a>
-
-            <div class="mt-2 text-white">
-                <i class="bi bi-pin-map-fill"></i> preciso de um serviço
-            </div>
-        </div>
+    <div class="mb-5 mt-1">
+        <a class="welcome__btn" href="{{ route('client.login') }}">Cliente</a>
         
-        <div class="container__nav__btn d-flex justify-content-center align-items-center flex-column">
-            <a class="nav__btn__sm" href="{{ route('admin.login') }}">sou administrador</a>
-        </div>
-    </nav>
+        <a class="welcome__btn" href="{{ route('provider.login') }}">Prestador</a>
+    </div>
 
-    <h1 class="text-white">Mão na Roda</h1>
+    <div class="mb-5 mt-1">
+        <img src="{{ asset('img/logo.png') }}">
+    </div>
 
-    <footer class="text-white">a melhor plataforma para encontrar profissionais</footer>
+    <footer class="text-white mb-5 mt-1">
+        <p class="m-0">A melhor plataforma para encontrar serviços profissionais.</p>
+        <p class="m-0">Seja para sua casa, apartamento, ou empresa.</p>
+    </footer>
+
+    <div class="mt-1">        
+        <a class="welcome__btn" href="{{ route('admin.login') }}">Administrador</a>
+    </div>
 @endsection
