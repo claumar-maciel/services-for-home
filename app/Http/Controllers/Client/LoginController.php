@@ -88,6 +88,15 @@ class LoginController extends Controller
         return redirect()->route('client.login');
     }
 
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+        
+        Session::flash('success','logout efetuado com sucesso'); 
+        return redirect()->route('client.login');
+    }
+
     public function home()
     {
         return view('client.home');

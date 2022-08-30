@@ -8,7 +8,14 @@
             @include('shared.error_success_alert')
         </div>
 
+        <div class="container text-center my-4">
+            Olá {{ auth()->user()->nome }}, seja bem-vindo!
+        </div>
 
-        Homepage protegida do cliente
+        <form action="{{ route('client.logout') }}" method="post">
+            @csrf
+
+            <button class="btn btn-outline-light">Sair</button>
+        </form>
     </div>
 @endsection

@@ -18,4 +18,5 @@ Route::group([
     'middleware' => 'auth:client'
 ], function () {
     Route::get('/panel', [LoginController::class, 'home'])->name('home');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
