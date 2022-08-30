@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h5 class="card-title text-dark">Entrar como administrador</h5>
                 <p class="card-text">
-                    <form class="mt-4" action="{{route('admin.login')}}" method="POST">
+                    <form class="mt-4">
                         <div class="form-group my-3">
                             <input type="email" class="form-control" placeholder="email">
                         </div>

@@ -11,6 +11,7 @@ use App\Models\Perfil;
 use App\Models\Usuario;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -72,8 +73,23 @@ class LoginController extends Controller
         }
     }
 
-    public function doLogin()
+    public function doLogin(Request $request)
     {
-        return view('client.login');
+        if ($usuario = Usuario::where('email', $request->email)->where('perfil_id', Perfil::CLIENTE)->first()) {
+            if (Hash::check($request->senha, $usuario->password)) {
+                Auth::guard('client')->login($usuario);
+
+                Session::flash('success','login efetuado com sucesso!'); 
+                return redirect()->route('client.home');
+            }            
+        }
+
+        Session::flash('error','não foi possível efetuar o login, verifique os dados informados'); 
+        return redirect()->route('client.login');
+    }
+
+    public function home()
+    {
+        return view('client.home');
     }
 }

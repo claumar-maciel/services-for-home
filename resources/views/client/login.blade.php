@@ -1,6 +1,6 @@
 @extends('layouts.auth')
  
-@section('title', 'administrador')
+@section('title', 'cliente')
  
 @section('content')
     <div class="container__auth">
@@ -8,15 +8,17 @@
             <div class="card-body">
                 <h5 class="card-title text-dark">Entrar como cliente</h5>
                 <p class="card-text">
-                    <form class="mt-4" action="{{route('client.login')}}" method="POST">
+                    <form class="mt-4" action="{{route('client.doLogin')}}" method="POST">
+                        @csrf
+
                         @include('shared.error_success_alert')
 
                         <div class="form-group my-3">
-                            <input type="email" class="form-control" placeholder="email">
+                            <input type="email" class="form-control" placeholder="email" name="email" value="{{ old('email') }}">
                         </div>
 
                         <div class="form-group" class="form-group my-3">
-                            <input type="password" class="form-control" placeholder="senha">
+                            <input type="password" class="form-control" placeholder="senha" name="senha">
                         </div>
 
                         <div class="d-flex justify-content-end form-group my-3">
