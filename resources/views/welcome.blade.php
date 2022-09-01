@@ -3,7 +3,7 @@
 @section('title', 'bem-vindo')
  
 @section('content')
-    <h1 class="text-white mb-5">MÃO NA RODA</h1>
+    <h1 class="text-white mb-5">SERVICES FOR HOME</h1>
 
     <div class="mb-5 mt-1">
         <a class="welcome__btn" href="{{ route('client.login') }}">Cliente</a>
