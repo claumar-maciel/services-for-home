@@ -25,4 +25,14 @@ class Usuario extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function contato()
+    {
+        return $this->belongsTo(Contato::class);
+    }
+
+    public function endereco()
+    {
+        return $this->belongsTo(Endereco::class);
+    }
 }
