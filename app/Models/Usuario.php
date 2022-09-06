@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -34,5 +35,22 @@ class Usuario extends Authenticatable
     public function endereco()
     {
         return $this->belongsTo(Endereco::class);
+    }
+
+    static function search(array $filters = []): Builder {
+        /** @var Builder $query */
+        $usuarios = self::query();
+
+        $search = isset($filters['search']) ? $filters['search'] : null;
+        if($search) {
+            $usuarios->where(function($query) use ($search) {
+                $query->where('email', 'like', "%$search%")
+                        ->orWhere('nome', 'like', "%$search%")
+                        ->orWhere('cpf', 'like', "%$search%")
+                        ->orWhere('username', 'like', "%$search%");
+            });
+        }
+
+        return $usuarios;
     }
 }

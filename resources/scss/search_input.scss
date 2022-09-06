@@ -1,0 +1,64 @@
+.container__search {
+    width: 350px;
+    position: relative;
+    z-index: 20px;
+  
+    @media(max-width: 1000px) {
+        width: 100%;
+        margin: 8px 4px;
+    }
+  
+    input {
+        width: 100%;
+        font-size: 16px;
+        color: #878787;
+        font-family: "Roboto";
+        font-style: italic;
+        outline: none;
+        background: white;
+        height: 48px;
+        padding: 16px 48px 16px 16px;
+        border-radius: 50px;
+        transition: 0.4s all;
+        box-shadow: 2px 2px 8px 2px lightgray;
+        border: none;
+    
+        @media (max-width: 500px) {
+            font-size: 14px;
+        }
+    
+        @media (max-width: 400px) {
+            font-size: 12px;
+        }
+    
+        @media (max-width: 360px) {
+            font-size: 10px;
+        }
+    
+        &:focus {
+            border: solid 1px rgb(0, 92, 145);
+        }
+    }
+  
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: rgb(13,167,253);
+        color: white;
+        border-radius: 50%;
+        top: 4px;
+        right: 4px;
+        transition: 0.4 all;
+        cursor: pointer;
+        text-decoration: none;
+    
+        &:hover {
+            background: rgb(0, 92, 145);
+            color: white;
+        }
+    }
+}

@@ -5,17 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Perfil;
 use App\Models\Usuario;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $clients = Usuario::where('perfil_id', Perfil::CLIENTE)->paginate(6);
+        $clients = Usuario::search($request->only('search'))    
+                            ->where('perfil_id', Perfil::CLIENTE)
+                            ->paginate(6);
 
-        return view('admin.clients.index', [
-            'clients' => $clients
-        ]);
+        $context = array_merge(
+            $request->only('search'),
+            ['clients' => $clients]
+        );
+
+        return view('admin.clients.index', $context);
     }
 
     public function edit(Usuario $client)
