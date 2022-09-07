@@ -74,7 +74,7 @@ class LoginController extends Controller
             );
             $admin->endereco()->update($dadosDoEndereco);
     
-            if (isset($request['password'])) {
+            if (isset($request['senha']) && !empty($request['senha'])) {
                 $request['password'] = Hash::make($request->senha);
             }
             $request['cpf'] = StringHelper::somenteNumeros($request->cpf);
