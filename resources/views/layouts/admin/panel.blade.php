@@ -13,6 +13,8 @@
         'resources/scss/panel.scss',
         'resources/js/app.js'
     ])
+
+    @yield('headScripts')
 </head>
 <body class="panel_layout">
     <div class="content">
@@ -65,5 +67,7 @@
             </div>
         </div>
     </div>
+
+    @yield('footerScripts')
 </body>
 </html>

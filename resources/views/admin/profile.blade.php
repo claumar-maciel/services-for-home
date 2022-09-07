@@ -1,6 +1,22 @@
 @extends('layouts.admin.panel')
  
 @section('title', "Editar perfil")
+
+@section('headScripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+@endsection
+
+@section('footerScripts')
+    <script>
+        $(document).ready(function(){
+            $('.telefone_residencial-input').inputmask('(99)9999-9999');
+            $('.celular-input').inputmask('(99)99999-9999');
+            $('.cep-input').inputmask('99999-999');
+            $('.cpf-input').inputmask('999.999.999-99');
+        });
+    </script>
+@endsection
  
 @section('content')
     <div class="w-100 mt-4">
@@ -28,7 +44,7 @@
                     </div>
             
                     <div class="form-group my-3">
-                        <input type="text" class="form-control" placeholder="cpf - ex: 999.999.999-99" name="cpf" value="{{auth()->user()->cpf}}">
+                        <input type="text" class="form-control cpf-input" placeholder="cpf - ex: 999.999.999-99" name="cpf" value="{{auth()->user()->cpf}}">
                     </div>
                 </div>
             
@@ -36,11 +52,11 @@
                     <h5>Contato</h5>
             
                     <div class="form-group my-3">
-                        <input type="text" class="form-control" placeholder="celular - ex: (99)99999-9999" name="celular" value="{{auth()->user()->contato->celular}}">
+                        <input type="text" class="form-control celular-input" placeholder="celular - ex: (99)99999-9999" name="celular" value="{{auth()->user()->contato->celular}}">
                     </div>
             
                     <div class="form-group my-3">
-                        <input type="text" class="form-control" placeholder="telefone residencial  - ex: (99)9999-9999" name="telefone_residencial" value="{{auth()->user()->contato->telefone_residencial}}">
+                        <input type="text" class="form-control telefone_residencial-input" placeholder="telefone residencial  - ex: (99)9999-9999" name="telefone_residencial" value="{{auth()->user()->contato->telefone_residencial}}">
                     </div>
                 </div>
             
@@ -48,7 +64,7 @@
                     <h5>Endereço</h5>
             
                     <div class="form-group my-3">
-                        <input type="text" class="form-control" placeholder="CEP - ex: 99999-999" name="cep" value="{{auth()->user()->endereco->cep}}">
+                        <input type="text" class="form-control cep-input" placeholder="CEP - ex: 99999-999" name="cep" value="{{auth()->user()->endereco->cep}}">
                     </div>
             
                     <div class="form-group my-3">
@@ -88,3 +104,4 @@
         </form>
     </div>
 @endsection
+
