@@ -4,12 +4,11 @@
  
 @section('content')
     <div class="w-100 mt-4">
-        <form class="container__auth__form mt-4" action="{{route('client.register')}}" method="POST"> 
+        <form class="container__auth__form mt-4" action="{{route('admin.clients.update', ['client' => $client->id])}}" method="POST"> 
             @csrf
+            @method('PUT')
             
-            <div class="container__auth__form__fields">
-                @include('shared.error_success_alert')
-            
+            <div class="container__auth__form__fields">            
                 <div class="mb-4">
                     <h5>Dados pessoais</h5>
                     <div class="form-group my-3">

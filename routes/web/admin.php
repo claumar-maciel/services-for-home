@@ -22,4 +22,5 @@ Route::group([
 
     Route::get('/clients', [ClientController::class, 'index'])->name('clients');
     Route::get('/clients/{client}', [ClientController::class, 'edit'])->name('clients.edit');
+    Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
 });
