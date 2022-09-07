@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Requests\Admin;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class ProfileUpdateRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        $user = auth()->user();
+        
+        return [
+            'email' => "required|email|max:75|unique:usuarios,email,$user->id",
+            'senha' => 'nullable|min:8|max:255',
+            'nome' => 'required|min:2|max:45',
+            'cpf' => "required|cpf|unique:usuarios,cpf,$user->id",
+            'username' => "required|min:2|max:45|unique:usuarios,username,$user->id",
+
+            'rua' => 'required|min:2|max:45',
+            'numero' => 'required|max:10',
+            'bairro' => 'required|min:2|max:45',
+            'cidade' => 'required|min:2|max:45',
+            'estado' => 'required|min:2|max:2',
+            'cep' => 'required|formato_cep',
+            'ponto_referencia' => 'required|min:2|max:45',
+            'complemento' => 'nullable|min:2|max:45',
+
+            'celular' => 'required|celular_com_ddd',
+            'telefone_residencial' => 'required|telefone_com_ddd'
+        ];
+    }
+}

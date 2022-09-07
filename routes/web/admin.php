@@ -20,6 +20,8 @@ Route::group([
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/panel', [LoginController::class, 'home'])->name('home');
+    Route::get('/profile', [LoginController::class, 'profileEdit'])->name('profile');
+    Route::put('/profile', [LoginController::class, 'profileUpdate'])->name('profile.update');
 
     Route::get('/clients', [ClientController::class, 'index'])->name('clients');
     Route::get('/clients/{client}', [ClientController::class, 'edit'])->name('clients.edit');
