@@ -1,14 +1,14 @@
 @extends('layouts.admin.panel')
  
-@section('title', 'Clientes')
+@section('title', 'Prestadores')
  
 @section('content')
     <div class="w-100 mt-4 d-flex justify-content-center align-items-center flex-wrap">
         <div class="d-flex justify-content-center w-100 mb-3">
-            <form class="container__search" action="{{ route('admin.clients') }}" method="GET">
+            <form class="container__search" action="{{ route('admin.providers') }}" method="GET">
                 @csrf
 
-                <input type="text" placeholder="buscar cliente..." name="search" value="{{ $search ?? '' }}" autofocus/>
+                <input type="text" placeholder="buscar prestador..." name="search" value="{{ $search ?? '' }}" autofocus/>
             
                 <button class="container__search__btn btn">
                     <i class="bi bi-search"></i>
@@ -16,8 +16,8 @@
             </form>
         </div>
 
-        @if ($clients->count())
-            @foreach ($clients as $client)
+        @if ($providers->count())
+            @foreach ($providers as $provider)
                 <div class="card m-3 p-2" style="max-width: 400px; min-width: 300px;">
                     <div class="row g-0">
                         <div class="col-md-4 d-flex align-items-center">
@@ -25,20 +25,19 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <a href="{{ route('admin.clients.edit', ['client' => $client->id]) }}" class="text-decoration-none text-dark">
-                                    <h5 class="card-title">{{ $client->nome }}</h5>
+                                <a href="{{ route('admin.providers.edit', ['provider' => $provider->id]) }}" class="text-decoration-none text-dark">
+                                    <h5 class="card-title">{{ $provider->nome }}</h5>
                                 </a>
-
-                                <h6 class="card-subtitle mb-2 text-muted">{{ $client->email }}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ $provider->email }}</h6>
                             </div>
                         </div>
                     </div>
                     <div class="w-100 d-flex justify-content-end">
-                        <a href="{{ route('admin.clients.edit', ['client' => $client->id]) }}" class="btn btn-primary btn-sm me-2">
+                        <a href="{{ route('admin.providers.edit', ['provider' => $provider->id]) }}" class="btn btn-primary btn-sm me-2">
                             <i class="bi bi-pencil"></i> editar
                         </a>
                         
-                        <form action="{{ route('admin.clients.destroy', ['client' => $client->id]) }}" method="post">
+                        <form action="{{ route('admin.providers.destroy', ['provider' => $provider->id]) }}" method="post">
                             @csrf
                             @method('delete')
 
@@ -49,12 +48,12 @@
             @endforeach
         @else   
             <div class="alert alert-light mt-4">
-                Nenhum cliente encontrado!  
+                Nenhum prestador encontrado!  
             </div>          
         @endif
     </div>
 
     <div class="d-flex justify-content-center mt-4">
-        {!! $clients->links() !!}
+        {!! $providers->links() !!}
     </div>
 @endsection

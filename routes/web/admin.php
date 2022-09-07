@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProviderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,10 @@ Route::group([
     Route::get('/clients', [ClientController::class, 'index'])->name('clients');
     Route::get('/clients/{client}', [ClientController::class, 'edit'])->name('clients.edit');
     Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
+    Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+    Route::get('/providers', [ProviderController::class, 'index'])->name('providers');
+    Route::get('/providers/{provider}', [ProviderController::class, 'edit'])->name('providers.edit');
+    Route::put('/providers/{provider}', [ProviderController::class, 'update'])->name('providers.update');
+    Route::delete('/providers/{provider}', [ProviderController::class, 'destroy'])->name('providers.destroy');
 });

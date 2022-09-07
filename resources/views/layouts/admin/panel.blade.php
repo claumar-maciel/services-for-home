@@ -25,7 +25,7 @@
                         </a>
     
                         <a class="btn me-2" href="{{ route('admin.clients') }}">clientes</a>
-                        <a class="btn me-2" href="#">prestadores</a>
+                        <a class="btn me-2" href="{{ route('admin.providers') }}">prestadores</a>
                     </div>
     
                     <div class="dropdown">
