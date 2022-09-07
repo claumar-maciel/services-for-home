@@ -14,11 +14,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => "required|email|max:75|unique:usuarios,email,{$this->client->id}",
+            'email' => "required|email|max:75|unique:usuarios,email,{$this->provider->id}",
             'senha' => 'nullable|min:8|max:255',
             'nome' => 'required|min:2|max:45',
-            'cpf' => "required|cpf|unique:usuarios,cpf,{$this->client->id}",
-            'username' => "required|min:2|max:45|unique:usuarios,username,{$this->client->id}",
+            'cpf' => "required|cpf|unique:usuarios,cpf,{$this->provider->id}",
+            'username' => "required|min:2|max:45|unique:usuarios,username,{$this->provider->id}",
 
             'rua' => 'required|min:2|max:45',
             'numero' => 'required|max:10',
