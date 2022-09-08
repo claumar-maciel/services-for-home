@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProfileUpdateRequest;
 use App\Http\Requests\Client\RegisterRequest;
 use App\Models\Contato;
 use App\Models\Endereco;
@@ -100,5 +101,50 @@ class LoginController extends Controller
     public function home()
     {
         return view('client.home');
+    }
+
+    public function profileEdit()
+    {
+        return view('client.profile');
+    }
+
+    public function profileUpdate(ProfileUpdateRequest $request)
+    {
+        $client = auth()->user();
+
+        try {
+            DB::beginTransaction();
+
+            $request['celular'] = StringHelper::somenteNumeros($request->celular);
+            $request['telefone_residencial'] = StringHelper::somenteNumeros($request->telefone_residencial);
+            $dadosDoContato = array_merge(
+                $request->only('celular', 'telefone_residencial')
+            );
+            $client->contato()->update($dadosDoContato);
+        
+            $request['cep'] = StringHelper::somenteNumeros($request->cep);
+            $dadosDoEndereco = array_merge(
+                $request->only('rua', 'numero', 'bairro', 'cidade', 'estado', 'cep', 'ponto_referencia', 'complemento')
+            );
+            $client->endereco()->update($dadosDoEndereco);
+    
+            if (isset($request['senha']) && !empty($request['senha'])) {
+                $request['password'] = Hash::make($request->senha);
+            }
+            $request['cpf'] = StringHelper::somenteNumeros($request->cpf);
+            $dadosDoUsuario = $request->only('email', 'password', 'nome', 'cpf', 'username');
+
+            $client->update($dadosDoUsuario);
+            
+            DB::commit();
+
+            Session::flash('success','perfil atualizado com sucesso!'); 
+            return redirect()->route('client.profile');
+        } catch (\Exception $e) {
+            DB::rollback();
+            
+            Session::flash('success','ocorreu um erro ao atualizar o perfil!'); 
+            return redirect()->route('client.profile');
+        }
     }
 }
