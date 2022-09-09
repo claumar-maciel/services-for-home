@@ -3,5 +3,7 @@
 @section('title', 'Chat')
  
 @section('content')
-    {{ $provider->nome }}       
+    <div id="app">
+        <client-chat />
+    </div>
 @endsection
