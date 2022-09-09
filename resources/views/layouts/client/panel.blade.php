@@ -29,26 +29,37 @@
                         <a class="btn me-2" href="{{ route('client.providers') }}">prestadores</a>
                     </div>
     
-                    <div class="dropdown">
-                        <button data-bs-toggle="dropdown" class="btn btn-light">
-                            <i class="bi bi-person-circle" style="font-size: 32px;"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item" href="{{ route('client.profile') }}">
-                                    <i class="bi bi-person-fill"></i> perfil
-                                </a>
-                            </li>
-                          <li>
-                            <form action="{{ route('client.logout') }}" method="post">
-                                @csrf
-                    
-                                <button class="dropdown-item">
-                                    <i class="bi bi-door-open"></i> sair
-                                </button>
-                            </form>
-                          </li>
-                        </ul>
+                    <div class="d-flex">
+                        <div class="dropdown">
+                            <button data-bs-toggle="dropdown" class="btn btn-light">
+                                <i class="bi bi-chat" style="font-size: 32px;"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end px-2 py-3" style="min-width: 320px">
+                                <h5>Chats</h5>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button data-bs-toggle="dropdown" class="btn btn-light">
+                                <i class="bi bi-person-circle" style="font-size: 32px;"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('client.profile') }}">
+                                        <i class="bi bi-person-fill"></i> perfil
+                                    </a>
+                                </li>
+                                <li>
+                                    <form action="{{ route('client.logout') }}" method="post">
+                                        @csrf
+                            
+                                        <button class="dropdown-item">
+                                            <i class="bi bi-door-open"></i> sair
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>
