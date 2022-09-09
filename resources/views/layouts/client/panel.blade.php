@@ -30,14 +30,9 @@
                     </div>
     
                     <div class="d-flex">
-                        <div class="dropdown">
-                            <button data-bs-toggle="dropdown" class="btn btn-light">
-                                <i class="bi bi-chat" style="font-size: 32px;"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end px-2 py-3" style="min-width: 320px">
-                                <h5>Chats</h5>
-                            </div>
-                        </div>
+                        <a class="btn btn-light" href="{{ route('client.chats.index') }}">
+                            <i class="bi bi-chat" style="font-size: 32px;"></i>
+                        </a>
 
                         <div class="dropdown">
                             <button data-bs-toggle="dropdown" class="btn btn-light">

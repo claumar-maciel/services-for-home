@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="w-100 d-flex justify-content-end">
-                        <a href="{{ route('client.providers.chat', ['providerId' => $provider->id]) }}" class="btn btn-primary btn-sm me-2">
+                        <a href="{{ route('client.chats.store', ['provider' => $provider->id]) }}" class="btn btn-primary btn-sm me-2">
                             <i class="bi bi-chat"></i> abrir chat
                         </a>
                     </div>

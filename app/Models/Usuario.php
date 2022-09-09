@@ -37,6 +37,16 @@ class Usuario extends Authenticatable
         return $this->belongsTo(Endereco::class);
     }
 
+    public function clientChats()
+    {
+        return $this->hasMany(Chat::class, 'client_id', 'id');
+    }
+
+    public function providerChats()
+    {
+        return $this->hasMany(Chat::class, 'provider_id', 'id');
+    }
+
     static function search(array $filters = []): Builder {
         /** @var Builder $query */
         $usuarios = self::query();

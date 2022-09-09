@@ -32,14 +32,4 @@ class ProviderController extends Controller
             'provider' => $provider
         ]);
     }
-
-    public function chat(int $poviderId)
-    {
-        $provider = Usuario::where('perfil_id', Perfil::PRESTADOR)
-                            ->findOrFail($poviderId);
-
-        return view('client.providers.chat', [
-            'provider' => $provider
-        ]);
-    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\ChatController;
 use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\ProviderController;
 use Illuminate\Support\Facades\Route;
@@ -26,5 +27,10 @@ Route::group([
 
     Route::get('/providers', [ProviderController::class, 'index'])->name('providers');
     Route::get('/providers/{providerId}', [ProviderController::class, 'show'])->name('providers.show');
-    Route::get('/providers/{providerId}/chat', [ProviderController::class, 'chat'])->name('providers.chat');
+    Route::post('/providers/{provider}/chat', [ChatController::class, 'store'])->name('providers.openChat');
+
+    Route::get('chats', [ChatController::class, 'index'])->name('chats.index');
+    Route::get('chats/{provider}/open-chat', [ChatController::class, 'store'])->name('chats.store');
+    Route::get('chats/{chat}', [ChatController::class, 'show'])->name('chats.show');
+    Route::post('chats/{chat}/messages', [ChatController::class, 'storeMessage'])->name('chats.storeMessage');
 });

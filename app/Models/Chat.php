@@ -18,4 +18,14 @@ class Chat extends Model
     {
         return $this->hasMany(Message::class);
     }
+
+    public function client()
+    {
+        return $this->belongsTo(Usuario::class, 'client_id', 'id');
+    }
+
+    public function provider()
+    {
+        return $this->belongsTo(Usuario::class, 'provider_id', 'id');
+    }
 }
