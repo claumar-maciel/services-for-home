@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Client;
 
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProfileUpdateRequest;
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\Client\RegisterRequest;
 use App\Models\Contato;
 use App\Models\Endereco;
 use App\Models\Perfil;
 use App\Models\Usuario;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

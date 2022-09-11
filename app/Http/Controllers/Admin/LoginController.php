@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProfileUpdateRequest;
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Perfil;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
