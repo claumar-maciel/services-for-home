@@ -15,6 +15,7 @@
     ])
 
     @yield('headScripts')
+    @livewireStyles
 </head>
 <body class="panel_layout">
     <div class="content">
@@ -72,5 +73,6 @@
     </div>
 
     @yield('footerScripts')
+    @livewireScripts
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Provider;
 
+use App\Events\ChatChanged;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMessageRequest;
 use App\Models\Chat;
@@ -36,6 +37,8 @@ class ChatController extends Controller
         ]);
 
         if ($message) {
+            event(new ChatChanged($chat));
+            
             Session::flash('success','mensagem enviada com sucesso!'); 
             return redirect()->route('provider.chats.show', ['chat' => $chat->id]);
         }
