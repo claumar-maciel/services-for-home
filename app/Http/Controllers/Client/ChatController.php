@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Client\StoreMessageRequest;
+use App\Http\Requests\StoreMessageRequest;
 use App\Models\Chat;
 use App\Models\Message;
 use App\Models\Perfil;
 use App\Models\Usuario;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class ChatController extends Controller
