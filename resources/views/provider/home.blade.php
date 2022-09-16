@@ -4,6 +4,6 @@
  
 @section('content')
     <div class="w-100 mt-4">
-        Olá <b>{{ auth()->user()->nome }}</b>, aqui você vai encontrar os melhores prestadores!
+        Olá <b>{{ auth()->user()->nome }}</b>, você está cadastrado como um prestador de serviços!
     </div>
 @endsection
