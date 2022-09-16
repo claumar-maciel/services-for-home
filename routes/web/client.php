@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Client\ChatController;
+use App\Http\Controllers\Client\HelpController;
 use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\ProviderController;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,6 @@ Route::group([
     Route::get('chats/{provider}/open-chat', [ChatController::class, 'store'])->name('chats.store');
     Route::get('chats/{chat}', [ChatController::class, 'show'])->name('chats.show');
     Route::post('chats/{chat}/messages', [ChatController::class, 'storeMessage'])->name('chats.storeMessage');
+
+    Route::get('/help-center', [HelpController::class, 'index'])->name('help-center');
 });

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Provider\ChatController;
+use App\Http\Controllers\Provider\HelpController;
 use App\Http\Controllers\Provider\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,6 @@ Route::group([
     Route::get('chats', [ChatController::class, 'index'])->name('chats.index');
     Route::get('chats/{chat}', [ChatController::class, 'show'])->name('chats.show');
     Route::post('chats/{chat}/messages', [ChatController::class, 'storeMessage'])->name('chats.storeMessage');
+
+    Route::get('/help-center', [HelpController::class, 'index'])->name('help-center');
 });

@@ -71,6 +71,8 @@
                     </div>
                 </div>
             </div>
+
+            <a href="{{ route('client.help-center') }}" class="btn btn-outline-dark mb-5"><i class="bi bi-question-circle"></i> Ajuda</a>
         </div>
     </div>
 
