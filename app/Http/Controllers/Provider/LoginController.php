@@ -99,7 +99,11 @@ class LoginController extends Controller
 
     public function home()
     {
-        return view('provider.home');
+        $chats = auth()->user()->providerChats;
+
+        return view('provider.home', [
+            'chats' => $chats
+        ]);
     }
 
     public function profileEdit()
