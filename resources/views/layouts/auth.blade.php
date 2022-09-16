@@ -13,6 +13,8 @@
         'resources/scss/auth.scss',
         'resources/js/app.js'
     ])
+
+    @yield('headScripts')
 </head>
 <body>
     <div class="content">
@@ -33,6 +35,7 @@
             <li></li>
             <li></li>
         </ul>
-    </div >
+    </div>
+    @yield('footerScripts')
 </body>
 </html>

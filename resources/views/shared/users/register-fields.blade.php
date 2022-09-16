@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-group my-3">
-            <input type="text" class="form-control" placeholder="cpf - ex: 999.999.999-99" name="cpf" value="{{old('cpf')}}">
+            <input type="text" class="form-control cpf-input" placeholder="cpf - ex: 999.999.999-99" name="cpf" value="{{old('cpf')}}">
         </div>
     </div>
 
@@ -28,11 +28,11 @@
         <h5>Contato</h5>
 
         <div class="form-group my-3">
-            <input type="text" class="form-control" placeholder="celular - ex: (99)99999-9999" name="celular" value="{{old('celular')}}">
+            <input type="text" class="form-control celular-input" placeholder="celular - ex: (99)99999-9999" name="celular" value="{{old('celular')}}">
         </div>
 
         <div class="form-group my-3">
-            <input type="text" class="form-control" placeholder="telefone residencial  - ex: (99)9999-9999" name="telefone_residencial" value="{{old('telefone_residencial')}}">
+            <input type="text" class="form-control telefone_residencial-input" placeholder="telefone residencial  - ex: (99)9999-9999" name="telefone_residencial" value="{{old('telefone_residencial')}}">
         </div>
     </div>
 
@@ -40,7 +40,7 @@
         <h5>Endereço</h5>
 
         <div class="form-group my-3">
-            <input type="text" class="form-control" placeholder="CEP - ex: 99999-999" name="cep" value="{{old('cep')}}">
+            <input type="text" class="form-control cep-input" placeholder="CEP - ex: 99999-999" name="cep" value="{{old('cep')}}">
         </div>
 
         <div class="form-group my-3">

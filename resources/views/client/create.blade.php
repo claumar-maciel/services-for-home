@@ -1,12 +1,14 @@
 @extends('layouts.auth')
  
-@section('title', 'criar conta')
+@section('title', 'criar cliente')
+
+@include('shared.jquery-input-masks')
  
 @section('content')
     <div class="container__auth">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title text-secondary">Criar conta</h5>
+                <h5 class="card-title text-secondary">Criar conta de cliente</h5>
                 <p class="card-text">
                     <form class="container__auth__form mt-4" action="{{route('client.register')}}" method="POST"> 
                         @csrf
