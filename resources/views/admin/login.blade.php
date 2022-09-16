@@ -30,5 +30,5 @@
         </div>
     </div>
 
-    <a href="{{ route('welcome') }}" class="welcome__btn">Voltar para a tela inicial</a>
+    <a href="{{ route('welcome') }}" class="welcome__btn">TELA INICIAL</a>
 @endsection
