@@ -27,7 +27,7 @@
                             <img src="{{ asset('img/logo.png') }}" width="60px">
                         </a>
     
-                        <a class="btn me-2" href="{{ route('client.providers') }}">prestadores</a>
+                        <a class="btn btn-outline-primary me-2" href="{{ route('client.providers') }}">prestadores</a>
                     </div>
     
                     <div class="d-flex">
