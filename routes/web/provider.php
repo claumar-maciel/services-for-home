@@ -15,6 +15,10 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::get('/create', [LoginController::class, 'create'])->name('create');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/login', [LoginController::class, 'doLogin'])->name('doLogin');
+Route::get('/recover-pass-form', [LoginController::class, 'recoverPassForm'])->name('recover-pass-form');
+Route::post('/recover-pass', [LoginController::class, 'recoverPass'])->name('recover-pass');
+Route::get('/change-pass-form', [LoginController::class, 'changePassForm'])->name('change-pass-form');
+Route::post('/change-pass', [LoginController::class, 'changePass'])->name('change-pass');
 
 Route::group([
     'middleware' => 'auth:provider'

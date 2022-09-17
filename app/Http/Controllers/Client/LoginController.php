@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Client;
 
 use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangePassRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\Client\RegisterRequest;
+use App\Http\Requests\RecoverPassRequest;
+use App\Http\Traits\RecoverPassTrait;
 use App\Models\Contato;
 use App\Models\Endereco;
 use App\Models\Perfil;
@@ -18,6 +21,31 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
+    use RecoverPassTrait;
+
+    public function recoverPassForm()
+    {
+        return view('client.recover-pass-form');
+    }
+
+    public function changePassForm(Request $request)
+    {
+        return view('client.change-pass-form', [
+            'recovery_code' => $request->code
+        ]);
+    }
+    
+    public function changePass(ChangePassRequest $request)
+    {
+        $usuario = Usuario::where('recovery_code', $request->recovery_code)->firstOrFail();
+
+        $usuario->password = Hash::make($request->senha);
+        $usuario->save();
+
+        Session::flash('success','senha atualizada com sucesso!'); 
+        return redirect()->route('client.login');
+    }
+    
     public function login()
     {
         return view('client.login');
