@@ -12,8 +12,6 @@
                         @csrf
 
                         @include('shared.error_success_alert')
-
-                        <input type="hidden" name="recovery_code" value="{{$recovery_code}}">
                         
                         <div class="form-group my-3">
                             <input type="email" class="form-control" placeholder="email" name="email" value="{{ old('email') }}">
