@@ -22,8 +22,8 @@
                         </div>
 
                         <div class="d-flex justify-content-end form-group my-3">
-                            <a class="btn btn-secondary ms-2" href="{{ route('admin.recover-pass-form') }}">recuperar senha</a>
-                            <button class="btn btn-primary ms-2">entrar</button>
+                            <a class="btn btn-secondary ms-2" href="{{ route('admin.recover-pass-form') }}">Recuperar senha</a>
+                            <button class="btn btn-primary ms-2">Entrar</button>
                         </div>
                     </form>
                 </p>

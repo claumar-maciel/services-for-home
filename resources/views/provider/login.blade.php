@@ -22,9 +22,9 @@
                         </div>
 
                         <div class="d-flex justify-content-end form-group my-3">
-                            <a class="btn btn-secondary ms-2" href="{{ route('provider.recover-pass-form') }}">recuperar senha</a>
-                            <a class="btn btn-secondary ms-2" href="{{ route('provider.create') }}">ainda não tenho cadastro</a>
-                            <button class="btn btn-primary ms-2">entrar</button>
+                            <a class="btn btn-secondary ms-2" href="{{ route('provider.recover-pass-form') }}">Recuperar senha</a>
+                            <a class="btn btn-secondary ms-2" href="{{ route('provider.create') }}">Novo cadastro</a>
+                            <button class="btn btn-primary ms-2">Entrar</button>
                         </div>
                     </form>
                 </p>
