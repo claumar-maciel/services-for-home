@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="w-100 d-flex justify-content-end align-items-center mt-3">
-                        @if ($provider->distancia)
+                        @if (isset($provider->distancia))
                             <span class="card-subtitle me-4 text-muted w-100"><b>Distância: </b> {{ round($provider->distancia, 2) }}km</span>
                         @endif
                         <a href="{{ route('client.chats.store', ['provider' => $provider->id]) }}" class="btn btn-primary btn-sm me-2 w-100">
