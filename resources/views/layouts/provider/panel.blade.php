@@ -75,6 +75,7 @@
     </div>
 
     @yield('footerScripts')
+    @yield('footerScripts2')
     @livewireScripts
 </body>
 </html>

@@ -15,6 +15,22 @@
                 </button>
             </form>
         </div>
+        <div class="w-100 d-flex justify-content-center">
+            <form action="{{ route('client.geolocation.store') }}" method="POST" id="geolocation-form">
+                @csrf
+                
+                <input type="hidden" name="latitude" id="geolocation-lat-input">
+                <input type="hidden" name="longitude" id="geolocation-long-input">
+            </form>
+
+            @if (!auth()->user()->endereco->latitude || !auth()->user()->endereco->longitude)
+                <a href="javascript:getLocation()" class="btn btn-outline-dark d-flex align-items-center flex-column my-3" style="max-width: 320px;">
+                    <i class="bi bi-geo-fill text-danger" style="font-size: 40px;"></i>
+                    <b>você ainda não adicionou a sua geolocalização, clique aqui para adicionar!</b>
+                </a>
+            @endif
+        </div>
+
 
         @if ($providers->count())
             @foreach ($providers as $provider)
@@ -50,4 +66,8 @@
     <div class="d-flex justify-content-center mt-4">
         {!! $providers->links() !!}
     </div>
+@endsection
+
+@section('footerScripts')
+    <script src="{{ asset('resources/js/geolocation.js') }}" defer></script>
 @endsection
