@@ -6,6 +6,20 @@
  
 @section('content')
     <div class="w-100 mt-4">
+        <div class="w-100 d-flex justify-content-center">
+            <form action="{{ route('provider.geolocation.store') }}" method="POST" id="geolocation-form">
+                @csrf
+                
+                <input type="hidden" name="latitude" id="geolocation-lat-input">
+                <input type="hidden" name="longitude" id="geolocation-long-input">
+            </form>
+
+            <a href="javascript:getLocation()" class="btn btn-outline-dark d-flex align-items-center flex-column my-3" style="max-width: 320px;">
+                <i class="bi bi-geo-fill text-danger" style="font-size: 40px;"></i>
+                <b>atualizar geolocalização para que seus clientes lhe encontrem com mais facilidade</b>
+            </a>
+        </div>
+
         <form class="container__auth__form mt-4" action="{{route('provider.profile.update')}}" method="POST"> 
             @csrf
             @method('PUT')
@@ -89,5 +103,9 @@
             </div>
         </form>
     </div>
+@endsection
+
+@section('footerScripts2')
+    <script src="{{ asset('resources/js/geolocation.js') }}" defer></script>
 @endsection
 
