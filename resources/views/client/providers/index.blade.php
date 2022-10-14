@@ -3,12 +3,12 @@
 @section('title', 'Prestadores')
  
 @section('content')
-    <div class="w-100 mt-4 d-flex justify-content-center align-items-center flex-wrap">
+    <div class="w-100 mt-4 d-flex justify-content-center align-items-stretch flex-wrap">
         <div class="d-flex justify-content-center w-100 mb-3">
             <form class="container__search" action="{{ route('client.providers') }}" method="GET">
                 @csrf
 
-                <input type="text" placeholder="buscar prestador..." name="search" value="{{ $search ?? '' }}" autofocus/>
+                <input type="text" placeholder="buscar serviço..." name="search" value="{{ $search ?? '' }}" autofocus/>
             
                 <button class="container__search__btn btn">
                     <i class="bi bi-search"></i>
@@ -34,8 +34,8 @@
 
         @if ($providers->count())
             @foreach ($providers as $provider)
-                <div class="card m-3 p-2" style="max-width: 400px; min-width: 300px;">
-                    <div class="row g-0">
+                <div class="card m-3 p-2 d-flex flex-column justify-content-center" style="max-width: 400px; min-width: 300px;">
+                    <div class="row g-0 d-flex align-items-center">
                         <div class="col-md-4 d-flex align-items-center">
                             <img src="{{ asset('img/man.png') }}" class="img-fluid rounded-start">
                         </div>
@@ -49,6 +49,19 @@
                             </div>
                         </div>
                     </div>
+
+                    @if ($provider->services->count())
+                        <div class="card p-2 my-2">
+                            <h6>Serviços prestados</h6>
+
+                            <div class="d-flex justify-content-center flex-wrap">
+                                @foreach ($provider->services as $service)
+                                    <span class="btn btn-sm btn-primary m-1">{{$service->description}}</span>        
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="w-100 d-flex justify-content-end align-items-center mt-3">
                         @if (isset($provider->distancia))
                             <span class="card-subtitle me-4 text-muted w-100"><b>Distância: </b> {{ round($provider->distancia, 2) }}km</span>

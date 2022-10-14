@@ -58,7 +58,6 @@ class Usuario extends Authenticatable
 
             $usuarios->join('enderecos', 'usuarios.endereco_id', '=', 'enderecos.id');
             $usuarios->selectRaw("usuarios.*,
-                enderecos.id,
                 enderecos.latitude,
                 enderecos.longitude,
                 ( 3959 * acos(cos(radians($latitude)) 
@@ -73,15 +72,19 @@ class Usuario extends Authenticatable
 
         $search = isset($filters['search']) ? $filters['search'] : null;
         if($search) {
+            $usuarios->join('service_usuario', 'usuarios.id', '=', 'service_usuario.usuario_id');
+            $usuarios->join('services', 'services.id', '=', 'service_usuario.service_id');
+
             $usuarios->where(function($query) use ($search) {
                 $query->where('usuarios.email', 'like', "%$search%")
                         ->orWhere('usuarios.nome', 'like', "%$search%")
                         ->orWhere('usuarios.cpf', 'like', "%$search%")
-                        ->orWhere('usuarios.username', 'like', "%$search%");
+                        ->orWhere('usuarios.username', 'like', "%$search%")
+                        ->orWhere('services.description', 'like', "%$search%");
             });
         }
 
-        return $usuarios;
+        return $usuarios->groupBy('usuarios.id');
     }
 
     public function services()
