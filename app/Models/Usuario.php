@@ -83,4 +83,9 @@ class Usuario extends Authenticatable
 
         return $usuarios;
     }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'service_usuario', 'usuario_id', 'service_id');
+    }
 }

@@ -26,6 +26,8 @@
                         <a class="navbar-brand" href="{{ route('provider.home') }}">
                             <img src="{{ asset('img/logo.png') }}" width="60px">
                         </a>
+
+                        <a class="btn btn-outline-primary me-2" href="{{ route('provider.services') }}">serviços</a>
                     </div>
     
                     <div class="d-flex">

@@ -17,7 +17,7 @@ class Service extends Model
 
     public function usuarios()
     {
-        return $this->belongsToMany(Usuario::class, 'service_usuario', 'usuario_id', 'service_id');
+        return $this->belongsToMany(Usuario::class, 'service_usuario', 'service_id', 'usuario_id');
     }
 
     static function search(array $filters = []) {

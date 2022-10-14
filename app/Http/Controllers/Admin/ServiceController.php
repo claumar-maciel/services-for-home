@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\StringHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Service\UpdateRequest;
 use App\Http\Requests\Service\StoreRequest;
 use App\Http\Requests\Service\UpdateRequest as ServiceUpdateRequest;
-use App\Models\Perfil;
 use App\Models\Service;
-use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class ServiceController extends Controller
