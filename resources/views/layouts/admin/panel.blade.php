@@ -28,6 +28,7 @@
     
                         <a class="btn btn-outline-primary me-2" href="{{ route('admin.clients') }}">clientes</a>
                         <a class="btn btn-outline-primary me-2" href="{{ route('admin.providers') }}">prestadores</a>
+                        <a class="btn btn-outline-primary me-2" href="{{ route('admin.services') }}">serviços</a>
                     </div>
     
                     <div class="dropdown">

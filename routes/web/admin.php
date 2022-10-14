@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProviderController;
+use App\Http\Controllers\Admin\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,4 +37,11 @@ Route::group([
     Route::get('/providers/{provider}', [ProviderController::class, 'edit'])->name('providers.edit');
     Route::put('/providers/{provider}', [ProviderController::class, 'update'])->name('providers.update');
     Route::delete('/providers/{provider}', [ProviderController::class, 'destroy'])->name('providers.destroy');
+
+    Route::get('/services', [ServiceController::class, 'index'])->name('services');
+    Route::get('/services/novo', [ServiceController::class, 'create'])->name('services.create');
+    Route::post('/services/novo', [ServiceController::class, 'store'])->name('services.store');
+    Route::get('/services/{service}', [ServiceController::class, 'edit'])->name('services.edit');
+    Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
+    Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
 });
