@@ -19,8 +19,8 @@
 <body class="panel_layout">
     <div class="content">
         <div class="d-flex justify-content-between align-items-center flex-column h-100 w-100">
-            <nav class="navbar navbar-light bg-light w-100 shadow p-3 mb-5 bg-body rounded">
-                <div class="container-fluid d-flex justify-content-between">
+            <nav class="navbar navbar-dark bg-dark w-100 shadow p-3 mb-5">
+                <div class="container-fluid d-flex justify-content-between container-xxl">
                     <div class="d-flex justify-content-center align-items-center">
                         <a class="navbar-brand" href="{{ route('admin.home') }}">
                             <img src="{{ asset('img/logo.png') }}" width="60px">
@@ -32,7 +32,7 @@
                     </div>
     
                     <div class="dropdown">
-                        <button data-bs-toggle="dropdown" class="btn btn-light">
+                        <button data-bs-toggle="dropdown" class="btn btn-outline-primary">
                             <i class="bi bi-person-circle" style="font-size: 32px;"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
