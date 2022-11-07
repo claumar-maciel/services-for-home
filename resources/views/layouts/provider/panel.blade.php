@@ -28,6 +28,7 @@
                         </a>
 
                         <a class="btn btn-outline-primary me-2" href="{{ route('provider.services') }}">serviços</a>
+                        <a class="btn btn-outline-primary me-2" href="{{ route('provider.schedulings.index') }}">agendamentos</a>
                     </div>
     
                     <div class="d-flex">

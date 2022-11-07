@@ -4,6 +4,7 @@ use App\Http\Controllers\Provider\ChatController;
 use App\Http\Controllers\Provider\GeolocationController;
 use App\Http\Controllers\Provider\HelpController;
 use App\Http\Controllers\Provider\LoginController;
+use App\Http\Controllers\Provider\SchedulingController;
 use App\Http\Controllers\Provider\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,11 +36,15 @@ Route::group([
     Route::get('chats', [ChatController::class, 'index'])->name('chats.index');
     Route::get('chats/{chat}', [ChatController::class, 'show'])->name('chats.show');
     Route::post('chats/{chat}/messages', [ChatController::class, 'storeMessage'])->name('chats.storeMessage');
-
+    Route::post('chats/{chat}/scheduling', [SchedulingController::class, 'store'])->name('chats.scheduling.store');
+    
     Route::get('/help-center', [HelpController::class, 'index'])->name('help-center');
-
+    
     Route::post('/geolocation', [GeolocationController::class, 'store'])->name('geolocation.store');
-
+    
     Route::get('/services', [ServiceController::class, 'index'])->name('services');
     Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+
+    Route::get('schedulings', [SchedulingController::class, 'index'])->name('schedulings.index');
+    Route::get('schedulings/{scheduling}', [SchedulingController::class, 'show'])->name('schedulings.show');
 });
