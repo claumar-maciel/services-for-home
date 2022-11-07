@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangeSchedulingStatusRequest;
 use App\Models\Scheduling;
+use App\Models\SchedulingStatus;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class SchedulingController extends Controller
 {
@@ -21,5 +25,25 @@ class SchedulingController extends Controller
         return view('client.schedulings.show',[
             'scheduling' => $scheduling
         ]);
+    }
+
+    public function changeStatus(ChangeSchedulingStatusRequest $request, Scheduling $scheduling)
+    {
+        try {
+            DB::beginTransaction();
+            
+            $scheduling->scheduling_status_id = $request->scheduling_status_id;
+            $scheduling->save();
+
+            DB::commit();
+
+            Session::flash('success', 'agendamento confirmado com sucesso!'); 
+            return redirect()->route('client.schedulings.index');
+        } catch (\Exception $e) {
+            DB::rollback();
+            
+            Session::flash('error', 'erro ao confirmar o agendamento!'); 
+            return redirect()->back();
+        }
     }
 }

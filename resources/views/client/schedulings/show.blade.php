@@ -26,6 +26,12 @@
             </div>
         @endif
 
+        @if ($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::ACCEPTED)
+            <div class="alert alert-warning mt-3">
+                Você já aceitou o agendamento, agora basta aguardar a prestação do serviço. Quando o prestador confirmar a finalização do serviço, você vai poder avaliar o mesmo.
+            </div>
+        @endif
+
         <div class="my-4">
             <hr>
             <h5>Dados do Prestador</h5>
@@ -51,7 +57,12 @@
 
         <div class="mt-4 d-flex justify-content-end">
             @if ($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::CREATED)
-                <form action="">
+                <form action="{{ route('client.schedulings.changeStatus', ['scheduling' => $scheduling->id]) }}" method="POST">
+                    @csrf
+                    @method('patch')
+
+                    <input type="hidden" name="scheduling_status_id" value="{{ \App\Models\SchedulingStatus::ACCEPTED }}">
+
                     <button class="btn btn-primary">Confirmar agendamento</button>
                 </form>
             @endif
