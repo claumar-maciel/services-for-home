@@ -5,6 +5,7 @@ use App\Http\Controllers\Client\GeolocationController;
 use App\Http\Controllers\Client\HelpController;
 use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\ProviderController;
+use App\Http\Controllers\Client\SchedulingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,4 +45,7 @@ Route::group([
     Route::get('/help-center', [HelpController::class, 'index'])->name('help-center');
 
     Route::post('/geolocation', [GeolocationController::class, 'store'])->name('geolocation.store');
+
+    Route::get('schedulings', [SchedulingController::class, 'index'])->name('schedulings.index');
+    Route::get('schedulings/{scheduling}', [SchedulingController::class, 'show'])->name('schedulings.show');
 });
