@@ -8,17 +8,23 @@ use App\Http\Requests\Provider\StoreSchedulingRequest;
 use App\Models\Chat;
 use App\Models\Scheduling;
 use App\Models\SchedulingStatus;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class SchedulingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $schedulings = Scheduling::where('provider_id', auth()->user()->id)->paginate(8);
+        $schedulings = Scheduling::where('provider_id', auth()->user()->id);
+
+        if ($request->scheduling_status_id) {
+            $schedulings = $schedulings->where('scheduling_status_id', $request->scheduling_status_id);
+        }
         
         return view('provider.schedulings.index',[
-            'schedulings' => $schedulings
+            'schedulings' => $schedulings->paginate(8),
+            'scheduling_status_id' => $request->scheduling_status_id ?? null
         ]);
     }
 

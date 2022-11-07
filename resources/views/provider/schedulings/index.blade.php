@@ -3,6 +3,22 @@
 @section('title', 'Agendamentos')
  
 @section('content')
+    <div class="mt-2">
+        <form action="{{ route('provider.schedulings.index') }}" class="d-flex justify-content-end" method="GET">
+            <div style="width: 320px;" class="d-flex">
+                <select name="scheduling_status_id" class="form-select">
+                    <option value="" {{ is_null($scheduling_status_id) ? 'selected' : '' }}>Situação do Agendamento</option>
+                    <option value="{{ \App\Models\SchedulingStatus::CREATED }}" {{ $scheduling_status_id == \App\Models\SchedulingStatus::CREATED ? 'selected' : '' }}>Criados</option>
+                    <option value="{{ \App\Models\SchedulingStatus::ACCEPTED }}" {{ $scheduling_status_id == \App\Models\SchedulingStatus::ACCEPTED ? 'selected' : '' }}>Aceitos</option>
+                    <option value="{{ \App\Models\SchedulingStatus::IN_PROGRESS }}" {{ $scheduling_status_id == \App\Models\SchedulingStatus::IN_PROGRESS ? 'selected' : '' }}>Em Andamento</option>
+                    <option value="{{ \App\Models\SchedulingStatus::FINISHED }}" {{ $scheduling_status_id == \App\Models\SchedulingStatus::FINISHED ? 'selected' : '' }}>Finalizados</option>
+                </select>
+
+                <button type="submit" class="btn btn-dark ms-1">Filtrar</button>
+            </div>
+        </form>
+    </div>
+
     <div class="w-100 mt-4 d-flex justify-content-center align-items-stretch flex-wrap">
         @if ($schedulings->count())
             @foreach ($schedulings as $scheduling)
