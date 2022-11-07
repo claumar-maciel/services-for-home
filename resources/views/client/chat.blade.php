@@ -4,6 +4,12 @@
  
 @section('content')
 <div class="container mt-4">
+    <div class="container d-flex justify-content-end align-items-center">
+        <a href="{{ route('client.schedulings.index') }}" class="btn btn-secondary">
+            <i class="bi bi-clock"></i> agendamentos
+        </a>
+    </div>
+
     <div class="my-4 px-2" id="chat-content"
         style="
             max-height: 480px; 

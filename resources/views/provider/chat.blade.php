@@ -5,6 +5,9 @@
 @section('content')
 <div class="container mt-4">
     <div class="container d-flex justify-content-end align-items-center">
+        <a href="{{ route('provider.schedulings.index') }}" class="btn btn-secondary me-1">
+            <i class="bi bi-clock"></i> agendamentos
+        </a>
         <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <i class="bi bi-clock"></i> agendar serviço
         </a>
@@ -54,7 +57,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="my-4 px-2" id="chat-content"
         style="
