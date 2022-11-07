@@ -20,9 +20,16 @@
                 : '-'
             }}
         </h6>
+
         @if ($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::CREATED)
             <div class="alert alert-warning mt-3">
                 O cliente ainda não aceitou o seu agendamento
+            </div>
+        @endif
+
+        @if ($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::FINISHED && is_null($scheduling->rating))
+            <div class="alert alert-warning mt-3">
+                O serviço foi finalizado, logo o cliente deve lhe avaliar ★.
             </div>
         @endif
 
@@ -45,8 +52,17 @@
             <h5>Dados do Agendamento</h5>
 
             <div class="text-muted">
-                <b>Situação: </b>{{ $scheduling->status->description }}
+                <span><b>Situação: </b>{{ $scheduling->status->description }}</span>
+
+                @if (!is_null($scheduling->rating))
+                    <br><span class="text-muted"><b>Nota: </b>{{ $scheduling->rating }}</span>
+                @endif
+
+                @if (!is_null($scheduling->client_comment))
+                    <br><span class="text-muted"><b>Comentário: </b>{{ $scheduling->client_comment }}</span>
+                @endif
             </div>
+
         </div>
 
         <div class="mt-4 d-flex justify-content-end">
@@ -71,7 +87,6 @@
                     <button class="btn btn-primary">Finalizar Serviço</button>
                 </form>
             @endif
-            
         </div>
     </div>
 @endsection
