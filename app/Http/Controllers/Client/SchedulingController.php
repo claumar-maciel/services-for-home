@@ -32,17 +32,21 @@ class SchedulingController extends Controller
         try {
             DB::beginTransaction();
             
+            if ($request->scheduling_status_id == SchedulingStatus::FINISHED) {
+                $scheduling->end_event = \Carbon\Carbon::now()->toDateTimeString();
+            }
+            
             $scheduling->scheduling_status_id = $request->scheduling_status_id;
             $scheduling->save();
 
             DB::commit();
 
-            Session::flash('success', 'agendamento confirmado com sucesso!'); 
+            Session::flash('success', 'agendamento atualizado com sucesso!'); 
             return redirect()->route('client.schedulings.index');
         } catch (\Exception $e) {
             DB::rollback();
             
-            Session::flash('error', 'erro ao confirmar o agendamento!'); 
+            Session::flash('error', 'erro ao atualizado o agendamento!'); 
             return redirect()->back();
         }
     }

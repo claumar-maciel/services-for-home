@@ -14,6 +14,8 @@ return new class extends Migration
             $table->id();
 
             $table->string('title', 45);
+            $table->smallInteger('rating')->nullable();
+            $table->text('client_comment')->nullable();
 
             $table->unsignedBigInteger('scheduling_status_id')->nullable(false)->default(SchedulingStatus::CREATED);
             $table->foreign('scheduling_status_id')->references('id')->on('scheduling_statuses')->onDelete('cascade')->onUpdate('cascade');

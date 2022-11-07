@@ -50,9 +50,28 @@
         </div>
 
         <div class="mt-4 d-flex justify-content-end">
-            <form action="">
-                <button class="btn btn-primary" {{ $scheduling->scheduling_status_id !== \App\Models\SchedulingStatus::ACCEPTED ? 'disabled' : '' }}>Finalizar Serviço</button>
-            </form>
+            @if ($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::ACCEPTED )
+                <form action="{{ route('provider.schedulings.changeStatus', ['scheduling' => $scheduling->id]) }}" method="POST">
+                    @csrf
+                    @method('patch')
+
+                    <input type="hidden" name="scheduling_status_id" value="{{ \App\Models\SchedulingStatus::IN_PROGRESS }}">
+
+                    <button class="btn btn-primary">Começar Serviço</button>
+                </form>
+            @endif
+
+            @if ($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::IN_PROGRESS )
+                <form action="{{ route('provider.schedulings.changeStatus', ['scheduling' => $scheduling->id]) }}" method="POST">
+                    @csrf
+                    @method('patch')
+
+                    <input type="hidden" name="scheduling_status_id" value="{{ \App\Models\SchedulingStatus::FINISHED }}">
+
+                    <button class="btn btn-primary">Finalizar Serviço</button>
+                </form>
+            @endif
+            
         </div>
     </div>
 @endsection

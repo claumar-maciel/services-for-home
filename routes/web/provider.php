@@ -47,4 +47,5 @@ Route::group([
 
     Route::get('schedulings', [SchedulingController::class, 'index'])->name('schedulings.index');
     Route::get('schedulings/{scheduling}', [SchedulingController::class, 'show'])->name('schedulings.show');
+    Route::patch('schedulings/{scheduling}/change-status', [SchedulingController::class, 'changeStatus'])->name('schedulings.changeStatus');
 });
