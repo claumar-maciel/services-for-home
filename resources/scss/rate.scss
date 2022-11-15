@@ -1,0 +1,76 @@
+.rate_provider_main {
+    padding-bottom: 10px;
+}
+
+.rate_provider_main h3 span {
+    display: block;
+}
+
+.rate_provider_body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 16px 0px;
+    text-align: center;
+
+    &_stars {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+
+        a {
+            margin: 0px 24px;
+            transition: 300ms all;
+
+            &:hover {
+                margin: 0px 16px;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    &_btns {
+        width: 100%;
+        margin-top: 16px;
+
+        button {
+            width: 100%;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+                width: 24px;
+                margin-right: 8px;
+            }
+        }
+
+        textarea {
+            padding: 8px 4px;
+            width: 240px;
+            height: 80px;
+            margin-bottom: 10px;
+            outline: none;
+            border: 1px solid;
+            resize: none;
+            border-radius: 6px;
+            width: 100%;
+        }
+    }
+
+    .btn {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin: auto;
+
+        i {
+            margin-right: 4px;
+        }
+    }
+}
