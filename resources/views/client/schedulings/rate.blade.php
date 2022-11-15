@@ -6,7 +6,7 @@
 <div class="rate_provider_main">
     <div class="rate_provider_body">
         <h5 class="mb-4">
-            <span class="text-primary">O que você achou do prestador?</span> 
+            <span class="text-primary">O que você achou do prestador {{ $scheduling->provider->name }}?</span> 
             <br>
             <small class="text-secondary">Ajude outros clientes avaliando o prestador.</small>
         </h5>
@@ -30,11 +30,28 @@
         </div>
 
         <div class="rate_provider_body_btns">
-            <form action="" method="post" autocomplete="off">
-                <input type="hidden" name="avaliacao" id="rate_provider_body_input">
+            <form action="{{ route('client.schedulings.rate.store', ['scheduling' => $scheduling->id]) }}" method="post" autocomplete="off" enctype="multipart/form-data">
+                @csrf
 
-                <textarea name="mensagem" id="rate_provider_mensagem_input"
+                <input type="hidden" name="rating" id="rate_provider_body_input">
+
+                <textarea name="client_comment" id="rate_provider_mensagem_input"
                     placeholder="Deixe uma mensagem sobre sua experiência com esse prestador (opcional)"></textarea>
+
+                <div class="mb-3">
+                    <a class="btn btn-dark d-flex justify-content-center align-items-center flex-column p-4" onclick="document.getElementById('hidden-images-input').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+                            <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                            <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/>
+                        </svg>
+                        <span class="mt-2">adicionar imagens do serviço</span>
+                    </a>
+                    <input type='file' name="images[]" id="hidden-images-input" style="display:none" multiple>
+                </div>
+
+                <div id="imgs-preview" class="mb-3">
+
+                </div>
 
                 <button type="submit" class="btn btn-primary" id="rate_provider_btn_submit" disabled>
                     <x-star-fill /> Avaliar
@@ -77,5 +94,33 @@
         for (var i = 0; i < btns.length; i++) {
             btns[i].addEventListener('click', updateRateBtns, false);
         }
+
+        function readURL(evt) {
+            var files = evt.target.files;
+            document.getElementById('imgs-preview').innerHTML = null;
+
+            for (var i = 0, f; f = files[i]; i++) {
+                if (!f.type.match('image.*')) {
+                    continue;
+                } //verifica se os arquivos são imagens
+
+                var reader = new FileReader();
+
+                reader.onload = (function(filei) {
+                    return function(e) {
+                        var tag = document.createElement('span');
+                        
+                        tag.innerHTML = ['<img width="120px" class="img-fluid m-1" src="', e.target.result,
+                                            '" title="', escape(filei.name), '"/>'].join('');
+                                            
+                        document.getElementById('imgs-preview').insertBefore(tag, null);
+                    };
+                })(f);
+                
+                reader.readAsDataURL(f);
+            }
+        }
+
+        document.getElementById('hidden-images-input').addEventListener('change', readURL, false);
     </script>
 @endsection

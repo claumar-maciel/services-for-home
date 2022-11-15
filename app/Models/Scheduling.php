@@ -17,6 +17,8 @@ class Scheduling extends Model
         'chat_id',
         'start_event',
         'end_event',
+        'rating',
+        'client_comment'
     ];
 
     public function client()
@@ -32,5 +34,10 @@ class Scheduling extends Model
     public function status()
     {
         return $this->belongsTo(SchedulingStatus::class, 'scheduling_status_id', 'id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(SchedulingImage::class, 'scheduling_id', 'id');
     }
 }

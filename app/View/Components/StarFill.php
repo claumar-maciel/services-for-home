@@ -7,10 +7,12 @@ use Illuminate\View\Component;
 class StarFill extends Component
 {
     public $class;
+    public $width;
 
-    public function __construct(?string $class = null)
+    public function __construct(?string $class = null, ?string $width = null)
     {
         $this->class = $class;
+        $this->width = $width;
     }
 
     /**

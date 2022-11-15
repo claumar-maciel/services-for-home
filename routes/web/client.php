@@ -6,6 +6,7 @@ use App\Http\Controllers\Client\HelpController;
 use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Client\ProviderController;
 use App\Http\Controllers\Client\SchedulingController;
+use App\Http\Controllers\Provider\RatingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,9 +34,9 @@ Route::group([
     Route::get('/profile', [LoginController::class, 'profileEdit'])->name('profile');
     Route::put('/profile', [LoginController::class, 'profileUpdate'])->name('profile.update');
 
-    Route::get('/providers', [ProviderController::class, 'index'])->name('providers');
-    Route::get('/providers/{providerId}', [ProviderController::class, 'show'])->name('providers.show');
-    Route::post('/providers/{provider}/chat', [ChatController::class, 'store'])->name('providers.openChat');
+    Route::get('providers', [ProviderController::class, 'index'])->name('providers');
+    Route::get('providers/{providerId}', [ProviderController::class, 'show'])->name('providers.show');
+    Route::post('providers/{provider}/chat', [ChatController::class, 'store'])->name('providers.openChat');
 
     Route::get('chats', [ChatController::class, 'index'])->name('chats.index');
     Route::get('chats/{provider}/open-chat', [ChatController::class, 'store'])->name('chats.store');
@@ -49,4 +50,6 @@ Route::group([
     Route::get('schedulings', [SchedulingController::class, 'index'])->name('schedulings.index');
     Route::get('schedulings/{scheduling}', [SchedulingController::class, 'show'])->name('schedulings.show');
     Route::patch('schedulings/{scheduling}/change-status', [SchedulingController::class, 'changeStatus'])->name('schedulings.changeStatus');
+    Route::get('schedulings/{scheduling}/rate', [RatingController::class, 'rate'])->name('schedulings.rate');
+    Route::post('schedulings/{scheduling}/rate', [RatingController::class, 'store'])->name('schedulings.rate.store');
 });

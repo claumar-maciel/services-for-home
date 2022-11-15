@@ -55,6 +55,32 @@
             </div>
         </div>
 
+        @if($scheduling->rating)
+            <hr>
+            <div class="my-4">
+                <h5>Avaliação</h5>
+
+                <div class="text-muted">
+                    <b>Nota: </b> <span class="text-primary">&#9733;</span>{{ $scheduling->rating }}
+                </div>
+
+                <div class="text-muted">
+                    <b>Comentário: </b>{{ $scheduling->client_comment }}
+                </div>
+
+                @if ($scheduling->images)
+                    <div>
+                        <b class="text-muted">Imagens:</b>
+        
+                        <div class="container d-flex justify-content-center align-items-center py-2">
+                            @foreach ($scheduling->images as $image)
+                                <img src= "{{asset("storage/$image->url") }}" alt="imagem" width="120px" class="img-fluid rounded">
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            </div>
+        @endif
         <div class="mt-4 d-flex justify-content-end">
             @if ($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::CREATED)
                 <form action="{{ route('client.schedulings.changeStatus', ['scheduling' => $scheduling->id]) }}" method="POST">
@@ -65,6 +91,10 @@
 
                     <button class="btn btn-primary">Confirmar agendamento</button>
                 </form>
+            @elseif($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::FINISHED && !$scheduling->rating)
+                <a href="{{ route('client.schedulings.rate', ['scheduling' => $scheduling->id]) }}" class="btn btn-primary">
+                    <x-star-fill width="18px" /> Avaliar prestador
+                </a>
             @endif
         </div>
     </div>
