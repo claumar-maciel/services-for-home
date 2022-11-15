@@ -70,5 +70,19 @@
         <div class="form-group my-3">
             <input type="text" class="form-control" placeholder="complemento - opcional" name="complemento" value="{{old('complemento')}}">
         </div> 
+
+        <div class="form-check">
+            <input 
+                class="form-check-input" 
+                type="checkbox" 
+                required
+                oninvalid="this.setCustomValidity('Você deve aceitar os termos!')" 
+                onchange="try{setCustomValidity('')}catch(e){}"    
+            >
+            
+            <label class="form-check-label" for="flexCheckChecked">
+                Aceito os termos conforme Lei nº12.965/2014.
+            </label>
+        </div>          
     </div>
 </div>
