@@ -63,6 +63,11 @@
     
             <div class="container-xxl pb-5">
                 @include('shared.error_success_alert')
+                
+                <div class="card w-100 d-flex justify-content-center align-items-center p-4 mb-3">
+                    <i class="bi bi-newspaper" style="font-size: 48px;"></i>
+                    <h5>Divulgue a sua empresa aqui!</h5>
+                </div>
 
                 <div class="card w-100">
                     <div class="card-body py-4 px-3">
