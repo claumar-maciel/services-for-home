@@ -81,6 +81,7 @@
                 @endif
             </div>
         @endif
+        
         <div class="mt-4 d-flex justify-content-end">
             @if ($scheduling->scheduling_status_id === \App\Models\SchedulingStatus::CREATED)
                 <form action="{{ route('client.schedulings.changeStatus', ['scheduling' => $scheduling->id]) }}" method="POST">

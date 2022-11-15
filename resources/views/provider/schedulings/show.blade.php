@@ -54,15 +54,28 @@
             <div class="text-muted">
                 <span><b>Situação: </b>{{ $scheduling->status->description }}</span>
 
-                @if (!is_null($scheduling->rating))
-                    <br><span class="text-muted"><b>Nota: </b>{{ $scheduling->rating }}</span>
-                @endif
+                @if($scheduling->rating)
+                    <div class="text-muted">
+                        <b>Nota: </b> <span class="text-primary">&#9733;</span>{{ $scheduling->rating }}
+                    </div>
 
-                @if (!is_null($scheduling->client_comment))
-                    <br><span class="text-muted"><b>Comentário: </b>{{ $scheduling->client_comment }}</span>
+                    <div class="text-muted">
+                        <b>Comentário: </b>{{ $scheduling->client_comment }}
+                    </div>
+
+                    @if ($scheduling->images)
+                        <div>
+                            <b class="text-muted">Imagens:</b>
+            
+                            <div class="container d-flex justify-content-center align-items-center py-2">
+                                @foreach ($scheduling->images as $image)
+                                    <img src= "{{asset("storage/$image->url") }}" alt="imagem" width="120px" class="img-fluid rounded">
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
                 @endif
             </div>
-
         </div>
 
         <div class="mt-4 d-flex justify-content-end">
