@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -44,4 +45,11 @@ Route::group([
     Route::get('/services/{service}', [ServiceController::class, 'edit'])->name('services.edit');
     Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
     Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+    Route::get('/faqs', [FaqController::class, 'index'])->name('faqs');
+    Route::get('/faqs/create', [FaqController::class, 'create'])->name('faqs.create');
+    Route::post('/faqs/create', [FaqController::class, 'store'])->name('faqs.store');
+    Route::get('/faqs/{faq}/edit', [FaqController::class, 'edit'])->name('faqs.edit');
+    Route::put('/faqs/{faq}/edit', [FaqController::class, 'update'])->name('faqs.update');
+    Route::delete('/faqs/{faq}/edit', [FaqController::class, 'destroy'])->name('faqs.destroy');
 });
