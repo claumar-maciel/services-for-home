@@ -9,10 +9,12 @@
         
         <div class="mb-4">
             <div class="form-group my-3">
+                <label>Pergunta</label>
                 <input type="text" class="form-control" placeholder="pergunta" name="question" value="{{$faq->question}}">
             </div>
     
             <div class="form-group my-3">
+                <label>Resposta</label>
                 <input type="text" class="form-control" placeholder="resposta" name="answer" value="{{$faq->answer}}">
             </div>
         </div>
