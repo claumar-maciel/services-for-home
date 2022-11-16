@@ -23,7 +23,17 @@
                 <div class="card mt-1 p-4 w-100">
                     <h5 class="text-primary d-flex justify-content-between align-items-center">
                         <span>{{ $faq->question }}</span>
-                        <a href="{{ route('admin.faqs.edit', ['faq' => $faq->id]) }}" class="btn btn-outline-dark btn-sm">Editar</a>
+                        
+                        <div class="d-flex">
+                            <form action="{{ route('admin.faqs.destroy', ['faq' => $faq->id]) }}" method="post" class="me-1">
+                                @csrf
+                                @method('delete')
+    
+                                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i> remover</button>
+                            </form>
+
+                            <a href="{{ route('admin.faqs.edit', ['faq' => $faq->id]) }}" class="btn btn-outline-dark btn-sm">Editar</a>
+                        </div>
                     </h5>
                     <p class="text-muted m-0">{{ $faq->answer }}</p>
                 </div><hr>
