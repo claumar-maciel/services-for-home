@@ -1,4 +1,4 @@
-@extends('layouts.client.panel')
+@extends('layouts.provider.panel')
  
 @section('title', 'Postagens')
  
