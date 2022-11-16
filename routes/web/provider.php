@@ -5,6 +5,7 @@ use App\Http\Controllers\Provider\FaqController;
 use App\Http\Controllers\Provider\GeolocationController;
 use App\Http\Controllers\Provider\HelpController;
 use App\Http\Controllers\Provider\LoginController;
+use App\Http\Controllers\Provider\PostController;
 use App\Http\Controllers\Provider\SchedulingController;
 use App\Http\Controllers\Provider\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -51,4 +52,6 @@ Route::group([
     Route::patch('schedulings/{scheduling}/change-status', [SchedulingController::class, 'changeStatus'])->name('schedulings.changeStatus');
 
     Route::get('/faqs', [FaqController::class, 'index'])->name('faqs');
+
+    Route::get('/posts', [PostController::class, 'index'])->name('posts');
 });

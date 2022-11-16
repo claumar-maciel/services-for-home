@@ -5,6 +5,7 @@ use App\Http\Controllers\Client\FaqController;
 use App\Http\Controllers\Client\GeolocationController;
 use App\Http\Controllers\Client\HelpController;
 use App\Http\Controllers\Client\LoginController;
+use App\Http\Controllers\Client\PostController;
 use App\Http\Controllers\Client\ProviderController;
 use App\Http\Controllers\Client\SchedulingController;
 use App\Http\Controllers\Provider\RatingController;
@@ -55,4 +56,6 @@ Route::group([
     Route::post('schedulings/{scheduling}/rate', [RatingController::class, 'store'])->name('schedulings.rate.store');
 
     Route::get('/faqs', [FaqController::class, 'index'])->name('faqs');
+
+    Route::get('/posts', [PostController::class, 'index'])->name('posts');
 });
