@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Faq\StoreRequest;
+use App\Http\Requests\Admin\Faq\UpdateRequest;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +30,7 @@ class FaqController extends Controller
         return view('admin.faqs.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         try {
             DB::beginTransaction();
@@ -54,7 +56,7 @@ class FaqController extends Controller
         ]);
     }
 
-    public function update(Faq $faq, Request $request)
+    public function update(Faq $faq, UpdateRequest $request)
     {
         try {
             DB::beginTransaction();
