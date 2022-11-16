@@ -1,6 +1,6 @@
 @extends('layouts.client.panel')
  
-@section('title', 'posts')
+@section('title', 'Postagens')
  
 @section('content')
     <div class="w-100 mt-4 d-flex justify-content-center align-items-center flex-wrap">
