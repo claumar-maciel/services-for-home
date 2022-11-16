@@ -20,7 +20,7 @@ class Faq extends Model
         if($search) {
             $faqs->where(function($query) use ($search) {
                 $query->where('question', 'like', "%$search%")
-                        ->where('answer', 'like', "%$search%");
+                        ->orWhere('answer', 'like', "%$search%");
             });
         }
 

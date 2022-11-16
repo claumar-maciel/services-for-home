@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Client\ChatController;
+use App\Http\Controllers\Client\FaqController;
 use App\Http\Controllers\Client\GeolocationController;
 use App\Http\Controllers\Client\HelpController;
 use App\Http\Controllers\Client\LoginController;
@@ -52,4 +53,6 @@ Route::group([
     Route::patch('schedulings/{scheduling}/change-status', [SchedulingController::class, 'changeStatus'])->name('schedulings.changeStatus');
     Route::get('schedulings/{scheduling}/rate', [RatingController::class, 'rate'])->name('schedulings.rate');
     Route::post('schedulings/{scheduling}/rate', [RatingController::class, 'store'])->name('schedulings.rate.store');
+
+    Route::get('/faqs', [FaqController::class, 'index'])->name('faqs');
 });

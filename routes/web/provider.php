@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Provider\ChatController;
+use App\Http\Controllers\Provider\FaqController;
 use App\Http\Controllers\Provider\GeolocationController;
 use App\Http\Controllers\Provider\HelpController;
 use App\Http\Controllers\Provider\LoginController;
@@ -48,4 +49,6 @@ Route::group([
     Route::get('schedulings', [SchedulingController::class, 'index'])->name('schedulings.index');
     Route::get('schedulings/{scheduling}', [SchedulingController::class, 'show'])->name('schedulings.show');
     Route::patch('schedulings/{scheduling}/change-status', [SchedulingController::class, 'changeStatus'])->name('schedulings.changeStatus');
+
+    Route::get('/faqs', [FaqController::class, 'index'])->name('faqs');
 });
