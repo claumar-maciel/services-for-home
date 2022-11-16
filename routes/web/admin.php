@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -52,4 +53,6 @@ Route::group([
     Route::get('/faqs/{faq}/edit', [FaqController::class, 'edit'])->name('faqs.edit');
     Route::put('/faqs/{faq}/edit', [FaqController::class, 'update'])->name('faqs.update');
     Route::delete('/faqs/{faq}/edit', [FaqController::class, 'destroy'])->name('faqs.destroy');
+
+    Route::resource('posts', PostController::class);
 });

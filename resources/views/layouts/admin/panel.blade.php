@@ -30,6 +30,7 @@
                         <a class="btn btn-outline-primary me-2" href="{{ route('admin.providers') }}">prestadores</a>
                         <a class="btn btn-outline-primary me-2" href="{{ route('admin.services') }}">serviços</a>
                         <a class="btn btn-outline-primary me-2" href="{{ route('admin.faqs') }}">FAQs</a>
+                        <a class="btn btn-outline-primary me-2" href="{{ route('admin.posts.index') }}">posts</a>
                     </div>
     
                     <div class="dropdown">
