@@ -91,4 +91,9 @@ class Usuario extends Authenticatable
     {
         return $this->belongsToMany(Service::class, 'service_usuario', 'usuario_id', 'service_id');
     }
+
+    public function schedulings()
+    {
+        return $this->hasMany(Scheduling::class, 'provider_id', 'id');
+    }
 }

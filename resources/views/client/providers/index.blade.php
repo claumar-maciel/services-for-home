@@ -56,7 +56,7 @@
 
                             <div class="d-flex justify-content-center flex-wrap">
                                 @foreach ($provider->services as $service)
-                                    <span class="btn btn-sm btn-primary m-1">{{$service->description}}</span>        
+                                    <span class="card px-3 py-2 m-1">{{$service->description}}</span>        
                                 @endforeach
                             </div>
                         </div>
