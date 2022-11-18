@@ -22,16 +22,18 @@
         <div class="d-flex justify-content-between align-items-center flex-column h-100 w-100">
             <nav class="navbar navbar-dark bg-dark w-100 shadow p-3 mb-5">
                 <div class="container-fluid d-flex justify-content-between container-xxl">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <a class="navbar-brand" href="{{ route('provider.home') }}">
+                    <div class="container__nav__buttons">
+                        <a class="navbar-brand container__nav__buttons__logo" href="{{ route('provider.home') }}">
                             <img src="{{ asset('img/logo.png') }}" width="60px">
                         </a>
 
-                        <a class="btn btn-outline-primary me-2" href="{{ route('provider.services') }}">serviços</a>
-                        <a class="btn btn-outline-primary me-2" href="{{ route('provider.schedulings.index') }}">agendamentos</a>
+                        <div class="container__nav__buttons__links">
+                            <a class="btn btn-outline-primary me-2" href="{{ route('provider.services') }}">serviços</a>
+                            <a class="btn btn-outline-primary me-2" href="{{ route('provider.schedulings.index') }}">agendamentos</a>
+                        </div>
                     </div>
     
-                    <div class="d-flex">
+                    <div class="container__nav__profile">
                         <a class="btn btn-outline-primary me-2" href="{{ route('provider.chats.index') }}">
                             <i class="bi bi-chat" style="font-size: 32px;"></i>
                         </a>

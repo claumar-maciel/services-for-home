@@ -2,5 +2,53 @@
     background: whitesmoke;
 }
 
+.container__nav__buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @media (max-width: 900px) {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    &__logo {
+        @media (max-width: 900px) {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+
+            img {
+                width: 120px;
+            }
+        }
+    }
+
+    &__links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        @media (max-width: 900px) {
+            margin-bottom: 16px;
+        }
+        
+        a {
+            margin: 4px;
+        }
+    }
+}
+
+.container__nav__profile {
+    display: flex;
+    
+    @media (max-width: 900px) {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 @import 'search_input';
 @import 'rate';

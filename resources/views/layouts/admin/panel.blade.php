@@ -21,38 +21,42 @@
         <div class="d-flex justify-content-between align-items-center flex-column h-100 w-100">
             <nav class="navbar navbar-dark bg-dark w-100 shadow p-3 mb-5">
                 <div class="container-fluid d-flex justify-content-between container-xxl">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <a class="navbar-brand" href="{{ route('admin.home') }}">
+                    <div class="container__nav__buttons">
+                        <a class="navbar-brand container__nav__buttons__logo" href="{{ route('admin.home') }}">
                             <img src="{{ asset('img/logo.png') }}" width="60px">
                         </a>
     
-                        <a class="btn btn-outline-primary me-2" href="{{ route('admin.clients') }}">clientes</a>
-                        <a class="btn btn-outline-primary me-2" href="{{ route('admin.providers') }}">prestadores</a>
-                        <a class="btn btn-outline-primary me-2" href="{{ route('admin.services') }}">serviços</a>
-                        <a class="btn btn-outline-primary me-2" href="{{ route('admin.faqs') }}">FAQs</a>
-                        <a class="btn btn-outline-primary me-2" href="{{ route('admin.posts.index') }}">posts</a>
+                        <div class="container__nav__buttons__links">
+                            <a class="btn btn-outline-primary me-2" href="{{ route('admin.clients') }}">clientes</a>
+                            <a class="btn btn-outline-primary me-2" href="{{ route('admin.providers') }}">prestadores</a>
+                            <a class="btn btn-outline-primary me-2" href="{{ route('admin.services') }}">serviços</a>
+                            <a class="btn btn-outline-primary me-2" href="{{ route('admin.faqs') }}">FAQs</a>
+                            <a class="btn btn-outline-primary me-2" href="{{ route('admin.posts.index') }}">posts</a>
+                        </div>
                     </div>
     
-                    <div class="dropdown">
-                        <button data-bs-toggle="dropdown" class="btn btn-outline-primary">
-                            <i class="bi bi-person-circle" style="font-size: 32px;"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item" href="{{ route('admin.profile') }}">
-                                    <i class="bi bi-person-fill"></i> perfil
-                                </a>
-                            </li>
-                          <li>
-                            <form action="{{ route('admin.logout') }}" method="post">
-                                @csrf
-                    
-                                <button class="dropdown-item">
-                                    <i class="bi bi-door-open"></i> sair
-                                </button>
-                            </form>
-                          </li>
-                        </ul>
+                    <div class="container__nav__profile">
+                        <div class="dropdown">
+                            <button data-bs-toggle="dropdown" class="btn btn-outline-primary">
+                                <i class="bi bi-person-circle" style="font-size: 32px;"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('admin.profile') }}">
+                                        <i class="bi bi-person-fill"></i> perfil
+                                    </a>
+                                </li>
+                              <li>
+                                <form action="{{ route('admin.logout') }}" method="post">
+                                    @csrf
+                        
+                                    <button class="dropdown-item">
+                                        <i class="bi bi-door-open"></i> sair
+                                    </button>
+                                </form>
+                              </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>
