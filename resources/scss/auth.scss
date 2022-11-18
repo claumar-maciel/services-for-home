@@ -6,6 +6,21 @@
     box-sizing: border-box;
 }
 
+.welcome__content__container {
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    height: 100vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .content {
     position: absolute;
     height: 100vh;
@@ -17,6 +32,7 @@
     font-family: 'Roboto Mono', monospace;
     padding: 32px;
     z-index: 1000;
+    overflow-y: auto;
 
     h1 {
         font-size: 56px;
