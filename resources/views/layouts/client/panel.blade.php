@@ -28,8 +28,8 @@
                         </a>
     
                         <div class="container__nav__buttons__links">
-                            <a class="btn btn-outline-primary me-2" href="{{ route('client.providers') }}">prestadores</a>
-                            <a class="btn btn-outline-primary me-2" href="{{ route('client.schedulings.index') }}">agendamentos</a>
+                            <a class="btn btn-outline-primary me-2" href="{{ route('client.providers') }}">Prestadores</a>
+                            <a class="btn btn-outline-primary me-2" href="{{ route('client.schedulings.index') }}">Agendamentos</a>
                         </div>
                     </div>
     
@@ -45,7 +45,7 @@
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <a class="dropdown-item" href="{{ route('client.profile') }}">
-                                        <i class="bi bi-person-fill"></i> perfil
+                                        <i class="bi bi-person-fill"></i> Perfil
                                     </a>
                                 </li>
                                 <li>
@@ -53,7 +53,7 @@
                                         @csrf
                             
                                         <button class="dropdown-item">
-                                            <i class="bi bi-door-open"></i> sair
+                                            <i class="bi bi-door-open"></i> Sair
                                         </button>
                                     </form>
                                 </li>
