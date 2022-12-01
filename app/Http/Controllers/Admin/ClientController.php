@@ -16,7 +16,7 @@ class ClientController extends Controller
 {
     public function index(Request $request)
     {
-        $clients = Usuario::search($request->only('search'))    
+        $clients = Usuario::search($request->only('search'), false)    
                             ->where('perfil_id', Perfil::CLIENTE)
                             ->paginate(6);
 

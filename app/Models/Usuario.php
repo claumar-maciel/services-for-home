@@ -48,7 +48,7 @@ class Usuario extends Authenticatable
         return $this->hasMany(Chat::class, 'provider_id', 'id');
     }
 
-    static function search(array $filters = []) {
+    static function search(array $filters = [], bool $filterByService = true) {
         /** @var Builder $query */
         $usuarios = self::query();
 
@@ -72,17 +72,27 @@ class Usuario extends Authenticatable
 
         $search = isset($filters['search']) ? $filters['search'] : null;
         if($search) {
-            $usuarios->join('service_usuario', 'usuarios.id', '=', 'service_usuario.usuario_id');
-            $usuarios->join('services', 'services.id', '=', 'service_usuario.service_id');
+            if ($filterByService) {
+                $usuarios->join('service_usuario', 'usuarios.id', '=', 'service_usuario.usuario_id');
+                $usuarios->join('services', 'services.id', '=', 'service_usuario.service_id');
 
-            $usuarios->where(function($query) use ($search) {
-                $query->where('usuarios.email', 'like', "%$search%")
-                        ->orWhere('usuarios.nome', 'like', "%$search%")
-                        ->orWhere('usuarios.cpf', 'like', "%$search%")
-                        ->orWhere('usuarios.username', 'like', "%$search%")
-                        ->orWhere('services.description', 'like', "%$search%");
-            });
+                $usuarios->where(function($query) use ($search) {
+                    $query->where('usuarios.email', 'like', "%$search%")
+                            ->orWhere('usuarios.nome', 'like', "%$search%")
+                            ->orWhere('usuarios.cpf', 'like', "%$search%")
+                            ->orWhere('usuarios.username', 'like', "%$search%")
+                            ->orWhere('services.description', 'like', "%$search%");
+                });
+            } else {
+                $usuarios->where(function($query) use ($search) {
+                    $query->where('usuarios.email', 'like', "%$search%")
+                            ->orWhere('usuarios.nome', 'like', "%$search%")
+                            ->orWhere('usuarios.cpf', 'like', "%$search%")
+                            ->orWhere('usuarios.username', 'like', "%$search%");
+                });
+            }
         }
+
 
         return $usuarios->groupBy('usuarios.id');
     }

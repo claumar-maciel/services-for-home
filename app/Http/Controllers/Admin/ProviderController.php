@@ -16,7 +16,7 @@ class ProviderController extends Controller
 {
     public function index(Request $request)
     {
-        $providers = Usuario::search($request->only('search'))    
+        $providers = Usuario::search($request->only('search'), false)    
                             ->where('perfil_id', Perfil::PRESTADOR)
                             ->paginate(6);
 
