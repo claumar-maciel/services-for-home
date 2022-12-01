@@ -1,6 +1,6 @@
 @extends('layouts.provider.panel')
  
-@section('title', 'Perguntas frequentes')
+@section('title', 'Dúvidas Frequentes')
  
 @section('content')
     <div class="w-100 mt-4 d-flex justify-content-center align-items-center flex-wrap">

@@ -1,6 +1,6 @@
 @extends('layouts.client.panel')
  
-@section('title', 'Manual do Usuário')
+@section('title', 'Telas Principais')
  
 @section('content')
     <div class="w-100 mt-4 d-flex justify-content-center align-items-center flex-wrap">
@@ -24,7 +24,7 @@
                     </h5>
 
                     @if ($post->banner)
-                        <img src= "{{asset("storage/$post->banner") }}" alt="banner" class="my-1" style="object-fit:cover; width:100%; height:320px;">
+                        <img src= "{{asset("storage/$post->banner") }}" alt="banner" class="my-1" style="object-fit:contain; height:320px;">
                     @endif
 
                     <p class="text-muted m-0">{{ $post->content }}</p>
