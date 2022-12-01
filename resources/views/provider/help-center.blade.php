@@ -4,9 +4,9 @@
  
 @section('content')
     <div class="w-100 mt-4">
-        Olá <b>{{ auth()->user()->nome }}</b>, você pode solicitar ajuda no email <b>corretorpleno@gmail.com</b>! <br>
-        Ou você pode navegar pelas <b>Dúvidas Frequentes</b> do sistema, onde você vai encontrar algumas dúvidas que outros usuários já tiveram. <br>
-        Além disso, você pode dar uma estudada nas <b>Telas Principais</b>, onde você vai encontrar alguns posts sobre determinadas partes do sistema e seu funcionamento. 
+        Olá <b>{{ auth()->user()->nome }}</b>, você pode solicitar ajuda no email <b>claumar.maciel@gmail.com</b>! <br>
+        Ou você pode navegar pelas <b>"Dúvidas Frequentes"</b>, com perguntas frequentes do sistema, onde você vai tirar suas dúvidas que outros usuários já tiveram. <br>
+        Além disso, você pode se familiarizar com algumas postagens sobre determinadas telas do sistema.
     </div>
 
     <div class="w-100 mt-4 d-flex justify-content-center">
