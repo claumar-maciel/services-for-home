@@ -1,6 +1,6 @@
 @extends('layouts.provider.panel')
  
-@section('title', 'seus serviços')
+@section('title', 'Serviços')
  
 @section('content')
     <div class="d-flex justify-content-end w-100 mb-3">
